@@ -1,0 +1,39 @@
+<button routerLink="/">Voltar para a home</button>
+<h2>Lista de Obras</h2>
+<button (click)="carregar()">Buscar</button>
+<br />
+<br />
+
+<table>
+  <thead>
+  <tr>
+    <th>Título</th>
+    <th>Autor</th>
+    <th>Editora</th>
+    <th>Ano</th>
+    <th>Estoque</th>
+    <th>Ações</th>
+  </tr>
+</thead>
+
+<tbody>
+  @for (o of obras; track o.id) {
+    <tr>
+      <td>{{ o.titulo }}</td>
+      <td>{{ o.autor }}</td>
+      <td>{{ o.editora }}</td>
+      <td>{{ o.anoPublicacao }}</td>
+      <td>{{ o.estoque }}</td>
+
+      <td style="width: 200px">
+        <button (click)="editar(o.id!)">Editar</button> &nbsp;
+        <button (click)="remover(o.id!)">Remover</button>
+      </td>
+    </tr>
+  }  @empty {
+    <tr>
+      <td colspan="6">Nenhum registro encontrado</td>
+    </tr>
+  }
+</tbody>
+</table>

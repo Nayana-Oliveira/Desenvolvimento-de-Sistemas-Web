@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    color: white;
+    background-color: #012344;
+    border-radius: 30px;
+    width: 110px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #1a1919;
+    transform: scale(1.05);
+}
+
+ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}

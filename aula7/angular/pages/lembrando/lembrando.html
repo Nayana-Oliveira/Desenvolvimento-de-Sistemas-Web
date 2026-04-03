@@ -1,0 +1,37 @@
+<button routerLink="/">Ir para Home</button>
+<h1 class="titulo">
+    {{titulo}}
+</h1>
+
+<hr>
+<h1>Botão</h1>
+<button class="btn" (click)="alterarTitulo()">Alterar titulo</button>
+<hr>
+
+<div class="contador">
+    <h3>Contador</h3>
+    <h3>{{contador}}</h3>
+    <button class="btn" (click)="aumentar()">+</button>
+    <button class="btn" (click)="diminuir()">-</button>
+</div>
+
+<hr>
+
+<div class="calculadora">
+    <h3>Calculadora</h3>
+    <div>
+        Número 1: <input type="text" [(ngModel)]="n1">
+    </div>
+    <div>
+        Número 2: <input type="text" [(ngModel)]="n2">
+    </div>
+    <div>
+        {{resultado}}
+    </div>
+    <div class="botoes">
+        <button class="btn" (click)="somar()">Somar</button>
+        <button class="btn" (click)="subtrair()">Subtrair</button>
+        <button class="btn" (click)="multiplicar()">Multiplicar</button>
+        <button class="btn" (click)="dividir()">Dividir</button>
+    </div>
+</div>

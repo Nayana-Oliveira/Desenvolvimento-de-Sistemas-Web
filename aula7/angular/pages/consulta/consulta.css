@@ -1,0 +1,39 @@
+table {
+    width: 1200px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #012344;
+    color: white;
+}
+
+td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 200px;
+}
+
+button {
+    color: white;
+    background-color: #012344;
+    border-radius: 30px;
+    width: 110px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #001429;
+    transform: scale(1.05);
+}

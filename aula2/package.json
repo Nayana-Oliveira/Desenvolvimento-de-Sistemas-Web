@@ -1,0 +1,24 @@
+{
+  "name": "aula2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nayana-Oliveira/Desenvolvimento-de-sistemas-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Nayana-Oliveira/Desenvolvimento-de-sistemas-web/issues"
+  },
+  "homepage": "https://github.com/Nayana-Oliveira/Desenvolvimento-de-sistemas-web#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
