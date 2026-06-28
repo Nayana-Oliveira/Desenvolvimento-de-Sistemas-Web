@@ -1,0 +1,115 @@
+<div class="produto-page">
+  <aside class="sidebar">
+    <div>
+      <div class="logo-area">
+        <img src="/assets/usuario/logo.png" />
+        <h2>Didio Admin</h2>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" routerLink="/admin/dashboard"><span>Dashboard</span></a>
+        <a class="menu-item active" routerLink="/admin/produto"><span>Produtos</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="top-header">
+      <div>
+        <h1 class="header-title">{{ idEditando ? 'Editar Produto' : 'Adicionar Novo Produto' }}</h1>
+        <p>{{ idEditando ? 'Altere os dados do produto selecionado' : 'Preencha os detalhes para cadastrar um novo item' }}</p>
+      </div>
+
+      <div class="header-actions">
+        <button class="cancelar-btn" type="button" (click)="limparFormulario()">
+          {{ idEditando ? 'Cancelar edição' : 'Limpar' }}
+        </button>
+        <button class="salvar-btn" type="button" (click)="salvarProduto()">
+          ✔ {{ idEditando ? 'Atualizar Produto' : 'Salvar Produto' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="produto-grid">
+      <section class="card">
+        <h3 class="card-title">Informações Gerais</h3>
+
+        <div class="input-group">
+          <label>Nome do produto *</label>
+          <input type="text" placeholder="Ex: Pizza Margherita Especial" [(ngModel)]="nome" />
+        </div>
+
+        <div class="input-group">
+          <label>Descrição *</label>
+          <textarea rows="7" placeholder="Descreva os ingredientes e detalhes do produto..." [(ngModel)]="descricao"></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title">Imagem do Produto</h3>
+
+        <label class="upload-box">
+          <input type="file" hidden accept="image/*" (change)="selecionarImagem($event)" />
+          <img *ngIf="previewImagem" [src]="previewImagem" class="preview-img" />
+
+          <div *ngIf="!previewImagem">
+            <h4>Clique para fazer upload</h4>
+            <p>{{ idEditando ? 'Envie uma nova imagem somente se quiser trocar' : 'Ou arraste e solte a imagem aqui' }}</p>
+            <small>PNG, JPG até 5MB</small>
+          </div>
+        </label>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title">Preço e Categoria</h3>
+
+        <div class="input-group">
+          <label>Preço Base (R$) *</label>
+          <input type="number" min="0" step="0.01" placeholder="R$ 0,00" [(ngModel)]="preco" />
+        </div>
+
+        <div class="input-group">
+          <label>Categoria *</label>
+          <select [(ngModel)]="categoria_id">
+            <option value="">Selecione uma categoria</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title">Tamanho</h3>
+
+        <div class="tamanhos">
+          <h4>Tamanho do Produto</h4>
+          <div class="tags">
+            <span [class.active]="tamanho === 'P'" (click)="selecionarTamanho('P')">Pequena</span>
+            <span [class.active]="tamanho === 'M'" (click)="selecionarTamanho('M')">Média</span>
+            <span [class.active]="tamanho === 'G'" (click)="selecionarTamanho('G')">Grande</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card lista-produtos">
+      <h3 class="card-title">Produtos cadastrados</h3>
+
+      <div class="produto-lista-item" *ngFor="let produto of produtos">
+        <img [src]="produto.imagemUrl" [alt]="produto.nome" />
+
+        <div class="produto-info">
+          <strong>{{ produto.nome }}</strong>
+          <span>{{ produto.categoria }} • {{ produto.tamanho }} • R$ {{ produto.preco }}</span>
+          <small>{{ produto.descricao }}</small>
+        </div>
+
+        <div class="produto-acoes">
+          <button type="button" class="editar-btn" (click)="editarProduto(produto)">Editar</button>
+          <button type="button" class="excluir-btn" (click)="excluirProduto(produto)">Excluir</button>
+        </div>
+      </div>
+
+      <p *ngIf="produtos.length === 0">Nenhum produto cadastrado.</p>
+    </section>
+  </main>
+</div>

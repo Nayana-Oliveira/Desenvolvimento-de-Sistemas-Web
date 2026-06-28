@@ -1,0 +1,33 @@
+<h2>Consulta de Times</h2>
+
+<button (click)="listar()">Carregar Times</button>
+
+<div class="table-container">
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Sigla</th>
+      <th>Copas</th>
+      <th>Ranking</th>
+      <th>Ativo</th>
+      <th>Fundação</th>
+      <th>Ações</th>
+    </tr>
+
+    <tr *ngFor="let t of times">
+      <td>{{t.nome}}</td>
+      <td>{{t.sigla}}</td>
+      <td>{{t.qtd_copas}}</td>
+      <td>{{t.ranking_fifa}}</td>
+      <td>{{t.ativo ? 'Sim' : 'Não'}}</td>
+      <td>{{t.data_fundacao}}</td>
+
+      <td class="actions">
+        <button (click)="editar(t.id)">Editar</button>
+        <button (click)="deletar(t.id)">Excluir</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<button class="voltar" routerLink="/">Voltar</button>

@@ -1,0 +1,89 @@
+.header {
+  width: 100%;
+  height: 52px;
+
+  background: #df1b57;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 18px;
+
+  border-bottom: 2px solid #c5154c;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+
+  color: white;
+
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.menu {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu a {
+  text-decoration: none;
+
+  color: white;
+
+  font-size: .85rem;
+  font-weight: 800;
+
+  letter-spacing: .5px;
+
+  white-space: nowrap;
+}
+
+.right-area {
+  display: flex;
+  align-items: center;
+}
+
+.login-btn,
+.user-link {
+  text-decoration: none;
+
+  color: white;
+
+  font-size: .85rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  transition: .2s;
+
+  white-space: nowrap;
+}
+
+.login-btn:hover,
+.user-link:hover {
+  opacity: .8;
+}

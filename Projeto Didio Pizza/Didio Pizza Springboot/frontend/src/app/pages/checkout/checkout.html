@@ -1,0 +1,154 @@
+<div class="checkout-page">
+  <h1>Checkout</h1>
+
+  <div class="layout">
+    <div class="left">
+      <div class="card">
+        <div class="card-header">
+          <h2>Resumo do Pedido</h2>
+
+          <span> {{ pedido.length }} item(ns) </span>
+        </div>
+
+        <div class="produto" *ngFor="let item of pedido">
+          <div class="produto-left">
+            <img [src]="item.imagem" />
+
+            <div>
+              <h3>
+                {{ item.nome }}
+              </h3>
+
+              <p>
+                {{ item.tamanho }}
+                •
+                {{ item.borda }}
+              </p>
+
+              <small>
+                Quantidade:
+                {{ item.quantidade }}
+              </small>
+            </div>
+          </div>
+
+          <strong>
+            R$
+            {{ (item.preco * item.quantidade).toFixed(2) }}
+          </strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>ENDEREÇO DE ENTREGA</h2>
+
+          <button>Alterar</button>
+        </div>
+
+        <div class="endereco-box">
+
+          <div>
+            <h3>Casa</h3>
+
+            <p>Av. Paulista, 1578 - Apto 43</p>
+
+            <span> Bela Vista </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card">
+        <h2 class="titulo">Forma de pagamento</h2>
+
+        <div class="pagamento" [class.active]="metodo === 'pix'" (click)="metodo = 'pix'">
+          <div>
+            <h3>Pix</h3>
+
+            <p>Aprovação imediata</p>
+          </div>
+
+          <div class="radio" [class.active-radio]="metodo === 'pix'"></div>
+        </div>
+
+        <div class="pagamento" [class.active]="metodo === 'cartao'" (click)="metodo = 'cartao'">
+          <div>
+            <h3>Cartão de Crédito</h3>
+
+            <p>Pagamento seguro</p>
+          </div>
+
+          <div class="radio" [class.active-radio]="metodo === 'cartao'"></div>
+        </div>
+
+        <div class="form-pagamento" *ngIf="metodo === 'pix'">
+          <input type="text" placeholder="CPF do titular do Pix" maxlength="10" inputmode="numeric" [(ngModel)]="cpfPix" (input)="limitarCpfPix()" />
+        </div>
+
+        <div class="form-pagamento" *ngIf="metodo === 'cartao'">
+          <input type="text" placeholder="Nome no cartão" [(ngModel)]="nomeCartao" />
+
+          <input type="text" placeholder="Número do cartão" [(ngModel)]="numeroCartao" />
+
+          <div class="linha-input">
+            <input type="text" placeholder="MM/AA" [(ngModel)]="validade" />
+
+            <input type="text" placeholder="CVV" [(ngModel)]="cvv" />
+          </div>
+        </div>
+
+        <div class="pagamento" [class.active]="metodo === 'dinheiro'" (click)="metodo = 'dinheiro'">
+          <div>
+            <h3>Dinheiro na entrega</h3>
+
+            <p>Precisa de troco?</p>
+          </div>
+
+          <div class="radio" [class.active-radio]="metodo === 'dinheiro'"></div>
+        </div>
+
+        <div class="form-pagamento" *ngIf="metodo === 'dinheiro'">
+          <input type="text" placeholder="Troco para quanto?" [(ngModel)]="troco" />
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="titulo">Cupom de desconto</h2>
+
+        <div class="cupom">
+          <input type="text" placeholder="Digite seu cupom" />
+
+          <button>Aplicar</button>
+        </div>
+      </div>
+
+      <div class="total-card">
+        <h2>Total do Pedido</h2>
+
+        <div class="linha-total">
+          <span> Subtotal </span>
+
+          <strong> R$ {{ subtotal.toFixed(2) }} </strong>
+        </div>
+
+        <div class="linha-total">
+          <span> Taxa de entrega </span>
+
+          <strong> R$ {{ entrega.toFixed(2) }} </strong>
+        </div>
+
+        <hr />
+
+        <div class="linha-total total">
+          <span> Total </span>
+
+          <strong> R$ {{ total.toFixed(2) }} </strong>
+        </div>
+
+        <button class="btn-finalizar" (click)="finalizarPedido()">Finalizar pedido</button>
+      </div>
+    </div>
+  </div>
+</div>

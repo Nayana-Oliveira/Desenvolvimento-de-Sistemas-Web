@@ -1,0 +1,131 @@
+<div class="top-bar">
+  <a class="btn-voltar" routerLink="/cardapio">
+    <span>←</span>
+
+    Voltar
+  </a>
+</div>
+
+<div class="container" *ngIf="produto">
+  <div class="esquerda">
+    <div class="imagem-box">
+      <img [src]="produto.imagem" />
+    </div>
+  </div>
+
+  <div class="direita">
+    <span class="breadcrumb">
+      Cardápio >
+      {{ produto.categoria }} >
+      {{ produto.nome }}
+    </span>
+
+    <h1>
+      {{ produto.nome }}
+    </h1>
+
+    <p class="descricao">
+      {{ produto.descricao }}
+    </p>
+
+    <h2 class="preco">A partir de R$ {{ produto.preco }}</h2>
+
+    <div class="config-box">
+      <div class="titulo-box">
+        <div>
+          <h3>Escolha o Tamanho</h3>
+
+          <span> Selecione o tamanho da sua pizza </span>
+        </div>
+
+        <small> Obrigatório </small>
+      </div>
+
+      <div class="tamanhos">
+        <div
+          class="tamanho"
+          *ngFor="let tamanho of tamanhos"
+          [class.active]="tamanhoSelecionado === tamanho.nome"
+          (click)="selecionarTamanho(tamanho.nome)"
+        >
+          <strong>
+            {{ tamanho.label }}
+          </strong>
+
+          <span> {{ tamanho.fatias }} Fatias </span>
+
+          <h4>
+            R$
+            {{ (produto.preco * tamanho.multiplicador).toFixed(2) }}
+          </h4>
+        </div>
+      </div>
+      <div class="bordas-area">
+        <div class="titulo-box borda-titulo">
+          <h3>Escolha a Borda</h3>
+
+          <small> Obrigatório </small>
+        </div>
+
+        <div
+          class="borda-item"
+          *ngFor="let borda of bordas"
+          [class.active]="bordaSelecionada === borda.nome"
+          (click)="selecionarBorda(borda.nome)"
+        >
+          <div class="borda-left">
+            <div class="radio"></div>
+
+            <div>
+              <strong>
+                {{ borda.nome }}
+              </strong>
+
+              <span>
+                {{ borda.descricao }}
+              </span>
+            </div>
+          </div>
+
+          <h4>
+            + R$
+            {{ borda.preco.toFixed(2) }}
+          </h4>
+        </div>
+      </div>
+
+      <div class="obs-area">
+        <h3>Alguma Observação?</h3>
+
+        <span> Ex: Tirar cebola, ponto da massa... </span>
+
+        <textarea [(ngModel)]="obs" placeholder="Digite aqui suas preferências..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar" *ngIf="produto">
+  <div class="total">
+    <span> Total do pedido </span>
+
+    <strong>
+      R$
+      {{ total.toFixed(2) }}
+    </strong>
+  </div>
+
+  <div class="acoes">
+    <div class="contador">
+      <button (click)="diminuir()">-</button>
+
+      <span>
+        {{ quantidade }}
+      </span>
+
+      <button (click)="aumentar()">+</button>
+    </div>
+
+    <button class="btn-carrinho" (click)="adicionarCarrinho()">Adicionar ao Carrinho</button>
+  </div>
+</div>

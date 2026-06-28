@@ -1,0 +1,200 @@
+.login-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.banner {
+    flex: 1;
+
+    background-image:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('/assets/usuario/pizza-bg.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.banner-content h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    max-width: 400px;
+}
+
+.banner-logo {
+    width: 150px;
+}
+
+.form-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.small-logo {
+    width: 40px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.input-wrapper input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 10px;
+}
+
+/* LINK */
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: #e31b4b;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+/* BOTÃO */
+.btn-primary {
+    width: 100%;
+    background-color: #e31b4b;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+/* DIVISOR */
+.divider {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin: 30px 0;
+}
+
+.divider span {
+    background: #fff;
+    padding: 0 10px;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* SOCIAL */
+.social-login {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-social {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-social img {
+    width: 18px;
+}
+
+.signup-text, .admin-footer {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.signup-text a, .admin-footer a {
+    color: #e31b4b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin-footer {
+    margin-top: 50px;
+    color: #999;
+}
+
+.tipo-login {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.tipo-login button {
+    flex: 1;
+
+    height: 45px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.tipo-login button.active {
+    background: #e5165b;
+    color: white;
+    border-color: #e5165b;
+}

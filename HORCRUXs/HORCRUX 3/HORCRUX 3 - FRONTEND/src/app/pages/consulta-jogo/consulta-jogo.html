@@ -1,0 +1,38 @@
+<h2>Consulta de Jogos</h2>
+
+<button (click)="listar()">Carregar Jogos</button>
+
+<table>
+  <tr>
+    <th>Mandante</th>
+    <th>Visitante</th>
+    <th>Placar</th>
+    <th>Público</th>
+    <th>Renda</th>
+    <th>Data</th>
+    <th>Hora</th>
+    <th>Ações</th>
+  </tr>
+
+  <tr *ngFor="let j of jogos">
+    <td>{{j.mandante}}</td>
+    <td>{{j.visitante}}</td>
+
+    <td>{{j.nr_gols_mandante}} x {{j.nr_gols_visitante}}</td>
+
+    <td>{{j.publico_pagante}}</td>
+
+    <td>{{j.renda_total}}</td>
+
+    <td>{{j.data_jogo | date:'dd/MM/yyyy'}}</td>
+
+    <td>{{j.data_jogo | date:'HH:mm'}}</td>
+
+    <td>
+      <button (click)="editar(j.id)">Editar</button>
+      <button (click)="deletar(j.id)">Excluir</button>
+    </td>
+  </tr>
+</table>
+
+<button class="voltar" routerLink="/">Voltar</button>

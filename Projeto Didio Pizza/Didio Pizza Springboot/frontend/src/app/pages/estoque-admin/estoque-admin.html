@@ -1,0 +1,213 @@
+<div class="estoque-page">
+  <div class="topbar">
+    <button class="btn-back" routerLink="/admin/dashboard">← Voltar ao Dashboard</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1>Controle de Estoque</h1>
+
+      <p>Gerencie ingredientes e acompanhe o estoque da cozinha</p>
+    </div>
+
+    <button type="button" class="btn-add" (click)="abrirModal()">+ Adicionar Ingrediente</button>
+  </div>
+
+  <div class="cards">
+    <div class="card-info destaque">
+
+      <div>
+        <span> Total de itens </span>
+
+        <h2>
+          {{ totalItens }}
+        </h2>
+
+        <small> ingredientes cadastrados </small>
+      </div>
+    </div>
+
+    <div class="card-info">
+
+      <div>
+        <span> Estoque Total </span>
+
+        <h2>
+          {{ estoqueTotal.toFixed(1) }}
+        </h2>
+
+        <small> disponíveis </small>
+      </div>
+    </div>
+
+    <div class="card-info">
+
+      <div>
+        <span> Itens Baixos </span>
+
+        <h2>
+          {{ itensBaixos }}
+        </h2>
+
+        <small> atenção necessária </small>
+      </div>
+    </div>
+
+    <div class="card-info">
+
+      <div>
+        <span> Próximos ao vencimento </span>
+
+        <h2>
+          {{ proximosVencimento }}
+        </h2>
+
+        <small> próximos 7 dias </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-area">
+    <div class="table-header">
+      <h2>Ingredientes</h2>
+
+      <span> {{ ingredientes.length }} itens </span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ingrediente</th>
+
+          <th>Quantidade</th>
+
+          <th>Unidade</th>
+
+          <th>Estoque mínimo</th>
+
+          <th>Vencimento</th>
+
+          <th>Status</th>
+
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of ingredientes">
+          <td>
+            <div class="produto-info">
+              <div class="emoji-box">
+                {{ getIcone(item.nome) }}
+              </div>
+
+              <div>
+                <strong>
+                  {{ item.nome }}
+                </strong>
+
+                <small> Ingrediente da cozinha </small>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            {{ item.quantidade }}
+          </td>
+
+          <td>
+            {{ item.unidade }}
+          </td>
+
+          <td>
+            {{ item.estoque_minimo }}
+          </td>
+
+          <td>
+            {{ item.vencimento | date: 'dd/MM/yyyy' }}
+          </td>
+
+          <td>
+            <span
+              class="status"
+              [class.critico]="getStatus(item) === 'Crítico'"
+              [class.atencao]="getStatus(item) === 'Atenção'"
+            >
+              {{ getStatus(item) }}
+            </span>
+          </td>
+
+          <td>
+            <div class="acoes-tabela">
+              <button class="btn-edit" (click)="editarIngrediente(item)">✏️</button>
+
+              <button class="btn-delete" (click)="removerIngrediente(item.id)">🗑️</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal" *ngIf="modalAberto">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>
+          {{ editando ? 'Editar Ingrediente' : 'Adicionar Ingrediente' }}
+        </h2>
+
+        <button type="button" (click)="fecharModal()">✕</button>
+      </div>
+
+      <div class="campo">
+        <label> Nome do ingrediente </label>
+
+        <input type="text" placeholder="Ex: Mussarela" [(ngModel)]="nome" />
+      </div>
+
+      <div class="form-grid">
+        <div class="campo">
+          <label> Quantidade </label>
+
+          <input type="number" placeholder="0" [(ngModel)]="quantidade" />
+        </div>
+
+        <div class="campo">
+          <label> Unidade </label>
+
+          <select [(ngModel)]="unidade">
+            <option value="kg">kg</option>
+
+            <option value="g">g</option>
+
+            <option value="L">L</option>
+
+            <option value="un">un</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="campo">
+          <label> Estoque mínimo </label>
+
+          <input type="number" placeholder="0" [(ngModel)]="estoqueMinimo" />
+        </div>
+
+        <div class="campo">
+          <label> Data de vencimento </label>
+
+          <input type="date" [(ngModel)]="vencimento" />
+        </div>
+      </div>
+
+      <div class="acoes">
+        <button type="button" class="cancelar" (click)="fecharModal()">Cancelar</button>
+
+        <button type="button" class="salvar" (click)="salvarIngrediente()">
+          {{ editando ? 'Salvar Alterações' : 'Salvar Ingrediente' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

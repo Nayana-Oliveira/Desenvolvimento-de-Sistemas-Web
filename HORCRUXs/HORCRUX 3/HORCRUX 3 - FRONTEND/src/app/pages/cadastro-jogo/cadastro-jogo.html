@@ -1,0 +1,41 @@
+<h2>Cadastro de Jogo</h2>
+
+<form (ngSubmit)="salvar()">
+
+  <select [(ngModel)]="jogo.id_time_mandante" name="mandante">
+    <option [ngValue]="null">Selecione Mandante</option>
+    <option *ngFor="let t of times" [ngValue]="t.id">
+      {{t.nome}}
+    </option>
+  </select>
+
+  <select [(ngModel)]="jogo.id_time_visitante" name="visitante">
+    <option [ngValue]="null">Selecione Visitante</option>
+    <option *ngFor="let t of times" [ngValue]="t.id">
+      {{t.nome}}
+    </option>
+  </select>
+
+  <input type="number" [(ngModel)]="jogo.nr_gols_mandante" name="gm">
+  <input type="number" [(ngModel)]="jogo.nr_gols_visitante" name="gv">
+  <input type="number" [(ngModel)]="jogo.publico_pagante" name="pub">
+  <input type="number" [(ngModel)]="jogo.renda_total" name="renda">
+
+  <label>
+    <input type="checkbox" [(ngModel)]="jogo.realizado" name="realizado">
+    Realizado
+  </label>
+
+  <label>Data do Jogo</label>
+  <input type="date" [(ngModel)]="data" name="data">
+
+  <label>Hora do Jogo</label>
+  <input type="time" [(ngModel)]="hora" name="hora">
+
+  <button type="submit">
+    {{ id ? 'Atualizar' : 'Salvar' }}
+  </button>
+
+</form>
+
+<a routerLink="/" class="voltar">Voltar</a>

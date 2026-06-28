@@ -1,0 +1,139 @@
+.login-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.banner {
+    flex: 1;
+    background:
+    linear-gradient(rgba(227,27,75,0.6), rgba(227,27,75,0.6)),        
+    url('/assets/usuario/pizza-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.banner-content {
+    max-width: 350px;
+}
+
+.banner-content h1 {
+    font-size: 2.2rem;
+    margin: 20px 0;
+}
+
+.banner-content p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.banner-logo {
+    width: 150px;
+}
+
+.form-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.small-logo {
+    width: 40px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: #e31b4b;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.divider {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin: 30px 0;
+}
+
+.divider span {
+    background: #fff;
+    padding: 0 10px;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.social-login {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-social {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-social img {
+    width: 18px;
+}
+
+.signup-text {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.signup-text a {
+    color: #e31b4b;
+    text-decoration: none;
+    font-weight: bold;
+}

@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="banner">
+    <div class="banner-content">
+      <img src="assets/usuario/logo.png" class="banner-logo" />
+      <h1>A pizza mais gostosa do mundo</h1>
+
+      <p>Faça login para acessar seus pedidos e promoções</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-wrapper">
+      <div class="form-header">
+        <img src="assets/usuario/logo.png" class="small-logo" />
+
+        <h1>DIDIO PIZZA</h1>
+      </div>
+      <h2>Bem vindo de volta!</h2>
+
+      <p class="subtitle">Faça login para continuar</p>
+
+      <div class="input-group">
+        <label> Email </label>
+
+        <div class="input-wrapper">
+
+          <input type="email" placeholder="Digite seu email" [(ngModel)]="email" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label> Senha </label>
+
+        <div class="input-wrapper">
+
+          <input type="password" placeholder="Digite sua senha" [(ngModel)]="senha" />
+        </div>
+
+        <a class="forgot-password"> Esqueceu sua senha? </a>
+      </div>
+
+      <button class="btn-primary" (click)="entrar()" [disabled]="carregando">
+        <span *ngIf="!carregando"> Entrar </span>
+
+        <span *ngIf="carregando"> Entrando... </span>
+      </button>
+
+      <p class="signup-text">
+        Não possui conta?
+
+        <a routerLink="/cadastro"> Criar conta </a>
+        
+      </p>
+      <div class="tipo-login">
+</div>
+    </div>
+  </div>
+</div>

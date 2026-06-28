@@ -1,0 +1,115 @@
+<div class="page">
+  <p>Pedido #{{ numeroPedido }} • Status: {{ formatarStatus(status) }}</p>
+
+  <div class="top-grid">
+    <div class="card status-card">
+      <h2>Status do pedido</h2>
+
+      <div class="steps">
+        <div class="step" [class.active]="statusAtivo('REGISTRADO', 'PREPARANDO', 'EM_ROTA', 'ENTREGUE', 'FINALIZADO')">
+          <span class="step-icon">{{ iconeStatus('confirmado') }}</span>
+          Confirmado
+        </div>
+
+        <div class="step" [class.active]="statusAtivo('PREPARANDO', 'EM_ROTA', 'ENTREGUE', 'FINALIZADO')">
+          <span class="step-icon">{{ iconeStatus('preparando') }}</span>
+          Preparando
+        </div>
+
+        <div class="step" [class.active]="statusAtivo('EM_ROTA', 'ENTREGUE', 'FINALIZADO')">
+          <span class="step-icon">{{ iconeStatus('rota') }}</span>
+          A caminho
+        </div>
+
+        <div class="step" [class.active]="statusAtivo('ENTREGUE', 'FINALIZADO')">
+          <span class="step-icon">{{ iconeStatus('entregue') }}</span>
+          Entregue
+        </div>
+      </div>
+
+      <div class="code-box">
+        <span> CÓDIGO DE SEGURANÇA </span>
+
+        <h3>
+          {{ codigoSeguranca }}
+        </h3>
+      </div>
+    </div>
+
+    <div class="card delivery-card">
+      <h2>ENDEREÇO DE ENTREGA</h2>
+
+      <h3>Casa</h3>
+
+      <p>1578, Av. Paulista</p>
+
+      <p>Bela Vista</p>
+
+      <div class="divider"></div>
+
+      <h3>FORMA DE PAGAMENTO</h3>
+
+      <p>{{ pedidoInfo?.pagamento === 'pix' ? 'Pix' : pedidoInfo?.pagamento === 'dinheiro' ? 'Dinheiro' : 'Cartão' }}</p>
+
+      <p *ngIf="pedidoInfo?.cpfPix">CPF Pix: {{ pedidoInfo.cpfPix }}</p>
+    </div>
+  </div>
+
+  <div class="bottom-grid">
+    <div class="card">
+      <h2>SEU PEDIDO</h2>
+
+      <div class="item" *ngFor="let item of pedido">
+        <img [src]="item.imagem" [alt]="item.nome" />
+
+        <div class="info">
+          <h3>
+            {{ item.nome || item.produto }}
+          </h3>
+
+          <p>
+            {{ item.tamanho }}
+            •
+            {{ item.borda || 'Tradicional' }}
+          </p>
+
+          <small>
+            Quantidade:
+            {{ item.quantidade }}
+          </small>
+        </div>
+
+        <strong>
+          R$
+          {{ (item.preco * item.quantidade).toFixed(2) }}
+        </strong>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2>RESUMO DO PEDIDO</h2>
+
+      <div class="line">
+        <span> Subtotal </span>
+
+        <span> R$ {{ subtotal.toFixed(2) }} </span>
+      </div>
+
+      <div class="line">
+        <span> Taxa de Entrega </span>
+
+        <span> R$ {{ entrega.toFixed(2) }} </span>
+      </div>
+
+      <hr />
+
+      <div class="line total">
+        <span> Total </span>
+
+        <span> R$ {{ total.toFixed(2) }} </span>
+      </div>
+      <button class="home-btn" type="button" (click)="pedirNovamente()">Pedir novamente</button>
+      <button class="home-btn secondary" routerLink="/">Voltar para Home</button>
+    </div>
+  </div>
+</div>

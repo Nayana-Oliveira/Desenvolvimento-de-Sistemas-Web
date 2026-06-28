@@ -1,0 +1,96 @@
+<div class="hero-section">
+  <img src="assets/pizzas/pizza-logo.png" alt="pizza" />
+
+  <h1>
+    DIDIO
+    <br />
+    PIZZA
+  </h1>
+
+  <div class="linha"></div>
+
+  <p>
+    Buscamos ingredientes matadores
+    <br />
+    para o máximo de sabor em cada fatia.
+  </p>
+</div>
+
+<section class="mais-pedidas">
+  <h2>MAIS PEDIDAS</h2>
+
+  <div class="grid-pizzas">
+    <div class="card-pizza" *ngFor="let pizza of pizzas">
+      <img [src]="pizza.imagem" [alt]="pizza.nome" />
+
+      <h3>
+        {{ pizza.nome }}
+      </h3>
+
+      <button [routerLink]="['/produto', pizza.produto_id || pizza.id]">Comprar</button>
+    </div>
+  </div>
+
+  <button class="btn-cardapio" routerLink="/cardapio">VER CARDÁPIO COMPLETO</button>
+</section>
+
+<section class="depoimento">
+  <p class="titulo">A PALAVRA NA RUA</p>
+
+  <button class="seta esquerda" (click)="anterior()" aria-label="Anterior"></button>
+
+  <div class="conteudo">
+    <h2>
+      {{ depoimentos[index].texto }}
+    </h2>
+
+    <p class="autor">
+      {{ depoimentos[index].autor }}
+    </p>
+  </div>
+
+  <button class="seta direita" (click)="proximo()" aria-label="Próximo"></button>
+
+  <div class="dots">
+    <span *ngFor="let d of depoimentos; let i = index" [class.active]="i === index"> </span>
+  </div>
+
+  <div class="selo">
+    A PIZZA MAIS
+    <br />
+
+    GOSTOSA
+    <br />
+
+    DO MUNDO
+  </div>
+</section>
+
+<section class="recomendados">
+  <h2>RECOMENDADOS PARA VOCÊ</h2>
+
+  <div class="cards">
+    <div class="card-dark" *ngFor="let item of recomendados">
+      <div class="top">
+        <div class="info">
+          <h3>
+            {{ item.nome }}
+          </h3>
+
+          <p>
+            {{ item.descricao }}
+          </p>
+
+          <span>
+            R$
+            {{ item.preco }}
+          </span>
+        </div>
+
+        <img [src]="item.imagem" />
+      </div>
+
+      <button class="btn-comprar" [routerLink]="['/produto', item.produto_id || item.id]">Comprar</button>
+    </div>
+  </div>
+</section>

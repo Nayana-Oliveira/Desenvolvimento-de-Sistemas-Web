@@ -1,0 +1,27 @@
+<h2>Cadastro de Time</h2>
+
+<form (ngSubmit)="salvar()">
+
+  <input [(ngModel)]="time.nome" name="nome" placeholder="Nome">
+
+  <input [(ngModel)]="time.sigla" name="sigla" placeholder="Sigla">
+
+  <input type="number" [(ngModel)]="time.qtd_copas" name="copas" placeholder="Copas">
+
+  <input type="number" [(ngModel)]="time.ranking_fifa" name="ranking" placeholder="Ranking">
+
+  <label>
+    <input type="checkbox" [(ngModel)]="time.ativo" name="ativo">
+    Ativo
+  </label>
+
+  <label>Data de Fundação</label>
+  <input type="date" [(ngModel)]="data" name="data">
+
+  <button type="submit">
+    {{ id ? 'Atualizar' : 'Salvar' }}
+  </button>
+
+</form>
+
+<button routerLink="/" class="voltar">Voltar</button>

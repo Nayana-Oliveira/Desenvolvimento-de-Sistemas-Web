@@ -1,0 +1,171 @@
+<div class="produto-page">
+  <aside class="sidebar">
+    <div>
+      <div class="logo-area">
+        <img src="/assets/usuario/logo.png" />
+
+        <h2>Didio Amin</h2>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" routerLink="/admin/dashboard">
+          <span> Dashboard </span>
+        </a>
+
+        <a class="menu-item active" routerLink="/admin/produto">
+          <span> Cadastrar produtos </span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="top-header">
+      <div>
+        <h1 class="header-title">{{ editando ? 'Editar Produto' : 'Adicionar Novo Produto' }}</h1>
+
+        <p>{{ editando ? 'Altere as informações da pizza selecionada' : 'Cadastre uma pizza uma única vez e informe os preços P, M e G' }}</p>
+      </div>
+
+      <div class="header-actions">
+        <button class="cancelar-btn" routerLink="/admin/dashboard">Cancelar</button>
+
+        <button class="salvar-btn" (click)="salvarProduto()">{{ editando ? '✔ Salvar Alterações' : '✔ Salvar Produto' }}</button>
+      </div>
+    </div>
+
+    <div class="produto-grid">
+      <section class="card">
+        <h3 class="card-title">Informações Gerais</h3>
+
+        <div class="input-group">
+          <label> Nome do produto * </label>
+
+          <input type="text" placeholder="Ex: Pizza Margherita Especial" [(ngModel)]="nome" />
+        </div>
+
+        <div class="input-group">
+          <label> Descrição * </label>
+
+          <textarea
+            rows="7"
+            placeholder="Descreva os ingredientes e detalhes do produto..."
+            [(ngModel)]="descricao"
+          ></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title">Imagem do Produto</h3>
+
+        <label class="upload-box">
+          <input type="file" hidden (change)="selecionarImagem($event)" />
+
+          <img *ngIf="previewImagem" [src]="previewImagem" class="preview-img" />
+
+          <div *ngIf="!previewImagem">
+            <h4>Clique para fazer upload</h4>
+
+            <p>Ou arraste e solte a imagem aqui</p>
+
+            <small> PNG, JPG até 5MB </small>
+          </div>
+        </label>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title">Preço e Categoria</h3>
+
+        <div class="input-group">
+          <ng-container *ngIf="editando; else precosVariacoes">
+            <label> Preço deste tamanho (R$) * </label>
+            <input type="number" placeholder="R$ 0,00" [(ngModel)]="preco" />
+          </ng-container>
+
+          <ng-template #precosVariacoes>
+            <label> Preços por tamanho</label>
+            <div class="form-grid-precos">
+              <input type="number" placeholder="P - R$" [(ngModel)]="precoP" />
+              <input type="number" placeholder="M - R$" [(ngModel)]="precoM" />
+              <input type="number" placeholder="G - R$" [(ngModel)]="precoG" />
+            </div>
+            <small>Preencha apenas os tamanhos que quer vender. O sistema cria as variações automaticamente.</small>
+          </ng-template>
+        </div>
+
+        <div class="input-group">
+          <label> Categoria * </label>
+
+          <select [(ngModel)]="categoria_id">
+            <option value="">Selecione uma categoria</option>
+
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nome }}
+            </option>
+          </select>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title">Opções de Personalização</h3>
+
+        <div class="switch-row">
+          <div>
+            <h4>Permitir Meio a Meio</h4>
+
+            <p>Cliente pode escolher 2 sabores</p>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" checked />
+
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="switch-row">
+          <div>
+            <h4>Borda Recheada</h4>
+
+            <p>Habilitar opção de borda</p>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" />
+
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="tamanhos" *ngIf="editando">
+          <h4>Tamanho do Produto</h4>
+
+          <div class="tags">
+            <span [class.active]="tamanho === 'P'" (click)="selecionarTamanho('P')"> Pequena </span>
+
+            <span [class.active]="tamanho === 'M'" (click)="selecionarTamanho('M')"> Média </span>
+
+            <span [class.active]="tamanho === 'G'" (click)="selecionarTamanho('G')"> Grande </span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card lista-produtos" *ngIf="!editando">
+      <h3 class="card-title">Produtos cadastrados</h3>
+      <p class="lista-info">Clique em editar para alterar nome, descrição, preço, tamanho ou imagem.</p>
+
+      <div class="produto-lista-item" *ngFor="let produto of produtos">
+        <div>
+          <strong>{{ produto.nome }}</strong>
+          <span>{{ produto.tamanho }} • {{ produto.categoria }} • {{ produto.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+        </div>
+
+        <div class="produto-acoes">
+          <button type="button" (click)="editarProduto(produto)">Editar</button>
+          <button type="button" class="excluir-btn" (click)="excluirProduto(produto)">Excluir</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

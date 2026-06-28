@@ -1,0 +1,59 @@
+<main class="login-container">
+  <section class="banner">
+    <div class="banner-content">
+      <img src="/assets/usuario/logo.png" class="banner-logo" />
+
+      <h1>Bem-vindo à Didio Pizza</h1>
+
+      <p>A melhor experiência em pizza agora ao seu alcance. Cadastre-se para começar!</p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="form-wrapper">
+      <h3>Crie sua conta</h3>
+
+      <p class="subtitle">Preencha os dados abaixo para começar.</p>
+
+      <form>
+        <div class="input-group">
+          <input type="text" placeholder="Nome completo" [(ngModel)]="nome" name="nome" />
+        </div>
+
+        <div class="input-group">
+          <input type="email" placeholder="E-mail" [(ngModel)]="email" name="email" />
+        </div>
+
+        <div class="input-group">
+          <input
+            type="text"
+            placeholder="Telefone (WhatsApp)"
+            [(ngModel)]="telefone"
+            name="telefone"
+          />
+        </div>
+
+        <div class="input-group">
+          <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" />
+        </div>
+
+        <div class="input-group">
+          <input
+            type="password"
+            placeholder="Confirmar sua senha"
+            [(ngModel)]="confirmarSenha"
+            name="confirmarSenha"
+          />
+        </div>
+
+        <button type="button" class="btn-primary" (click)="fazerCadastro()">Cadastrar</button>
+      </form>
+
+      <p class="signup-text">
+        Já tem uma conta?
+
+        <a routerLink="/login"> Faça login </a>
+      </p>
+    </div>
+  </section>
+</main>

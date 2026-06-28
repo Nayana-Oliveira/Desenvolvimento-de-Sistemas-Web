@@ -1,0 +1,57 @@
+.footer {
+  background-color: #d61c4e;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 20px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.col {
+  min-width: 150px;
+}
+
+.col h4 {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.col p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.col p:hover {
+  color: #ffcc00;
+}
+
+.social,
+.pagamentos {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social img,
+.pagamentos img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.social img:hover,
+.pagamentos img:hover {
+  transform: scale(1.2);
+}
+
+.pagamentos img {
+  background: white;
+  padding: 5px;
+  border-radius: 6px;
+}

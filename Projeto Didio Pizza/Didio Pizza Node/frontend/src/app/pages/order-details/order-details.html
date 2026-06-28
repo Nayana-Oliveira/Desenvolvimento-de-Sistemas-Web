@@ -1,0 +1,100 @@
+<div class="page">
+  <p>Pedido #{{ numeroPedido }}</p>
+
+  <div class="top-grid">
+    <div class="card status-card">
+      <h2>Status do pedido: {{ status }}</h2>
+
+      <div class="steps">
+        <div class="step" [class.active]="etapaAtiva('REGISTRADO')">Confirmado</div>
+
+        <div class="step" [class.active]="etapaAtiva('PREPARANDO')">Preparando</div>
+
+        <div class="step" [class.active]="etapaAtiva('EM_ROTA')">A caminho</div>
+
+        <div class="step" [class.active]="etapaAtiva('ENTREGUE')">Entregue</div>
+      </div>
+
+      <div class="code-box">
+        <span> CÓDIGO DE SEGURANÇA </span>
+
+        <h3>
+          {{ codigoSeguranca }}
+        </h3>
+      </div>
+    </div>
+
+    <div class="card delivery-card">
+      <h2>ENDEREÇO DE ENTREGA</h2>
+
+      <h3>Casa</h3>
+
+      <p>1578, Av. Paulista</p>
+
+      <p>Bela Vista</p>
+
+      <div class="divider"></div>
+
+      <h3>FORMA DE PAGAMENTO</h3>
+
+      <p>Visa •••• 4242</p>
+    </div>
+  </div>
+
+  <div class="bottom-grid">
+    <div class="card">
+      <h2>SEU PEDIDO</h2>
+
+      <div class="item" *ngFor="let item of pedido">
+        <img *ngIf="item.imagem" [src]="item.imagem" [alt]="item.nome" />
+
+        <div class="info">
+          <h3>
+            {{ item.nome || item.produto }}
+          </h3>
+
+          <p>
+            {{ item.tamanho }}
+            •
+            {{ item.borda }}
+          </p>
+
+          <small>
+            Quantidade:
+            {{ item.quantidade }}
+          </small>
+        </div>
+
+        <strong>
+          R$
+          {{ (item.preco * item.quantidade).toFixed(2) }}
+        </strong>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2>RESUMO DO PEDIDO</h2>
+
+      <div class="line">
+        <span> Subtotal </span>
+
+        <span> R$ {{ subtotal.toFixed(2) }} </span>
+      </div>
+
+      <div class="line">
+        <span> Taxa de Entrega </span>
+
+        <span> R$ {{ entrega.toFixed(2) }} </span>
+      </div>
+
+      <hr />
+
+      <div class="line total">
+        <span> Total </span>
+
+        <span> R$ {{ total.toFixed(2) }} </span>
+      </div>
+      <button class="home-btn" routerLink="/">Voltar para Home</button>
+    </div>
+  </div>
+</div>

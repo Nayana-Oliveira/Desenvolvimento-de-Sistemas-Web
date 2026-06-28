@@ -1,0 +1,150 @@
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo">
+        <img src="assets/usuario/logo.png" />
+
+        <h1>Didio Amin</h1>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" routerLink="/admin/dashboard"> Dashboard </a>
+
+        <a routerLink="/admin/produto"> Cadastrar produtos </a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <button class="logout" (click)="logout()">↩ Sair</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="top-header">
+      <h2>Dashboard</h2>
+
+      <p>Acompanhe as métricas da sua pizzaria hoje.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-info">
+          <h3>Vendas Hoje</h3>
+
+          <strong> R$ 1000,00 </strong>
+
+          <span> ↗ +12.5% vs ontem </span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-info">
+          <h3>Pedidos Realizados</h3>
+
+          <strong>
+            {{ pedidos.length }}
+          </strong>
+
+          <span> ↗ +5 vs ontem </span>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="card-info">
+          <h3>Tempo Médio Entrega</h3>
+
+          <strong> 32 min </strong>
+
+          <span> ↗ -4% vs ontem </span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="loja-box">
+      <div class="loja-info">
+        <h3>Bem vindo de volta, Admin</h3>
+
+        <strong> Unidade Santa Cecilia - Didio Pizza </strong>
+
+        <div class="status-loja">
+          <div class="bolinha" [class.fechada]="!lojaAberta"></div>
+
+          <span>
+            {{ lojaAberta ? 'Loja Aberta' : 'Loja Fechada' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="acoes-loja">
+        <button class="btn-loja ver-btn" routerLink="/">Ver Loja</button>
+
+        <button class="btn-loja abrir-btn" (click)="abrirLoja()">Abrir Loja</button>
+
+        <button class="btn-loja fechar-btn" (click)="fecharLoja()">Fechar Loja</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <div class="box-header">
+          <h3>Alerta de Estoque</h3>
+
+          <a routerLink="/admin/estoque"> Ver tudo </a>
+        </div>
+
+        <div class="estoque-item" *ngFor="let item of estoqueBaixo">
+          <div class="item-left">
+            <div class="item-icon">
+            </div>
+
+            <div class="item-info">
+              <strong>
+                {{ item.nome }}
+              </strong>
+
+              <span>
+                Restam
+                {{ item.quantidade }}
+                {{ item.unidade }}
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="alerta"
+            [class.atencao]="item.quantidade > 5"
+            [class.critico]="item.quantidade <= 5"
+          >
+            {{ item.quantidade <= 5 ? 'Crítico' : 'Atenção' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-header">
+          <h3>Pedidos em Tempo Real</h3>
+        </div>
+
+        <div *ngIf="!lojaAberta">
+          <p class="loja-fechada">Loja fechada</p>
+        </div>
+
+        <div *ngIf="lojaAberta">
+          <div class="pedido-item" *ngFor="let pedido of pedidos">
+            <strong> Pedido #{{ pedido.id }} </strong>
+
+            <select [ngModel]="pedido.status" (ngModelChange)="alterarStatusPedido(pedido, $event)">
+              <option *ngFor="let status of statusDisponiveis" [value]="status">
+                {{ status }}
+              </option>
+            </select>
+
+            <div class="pedido-preco">R$ {{ pedido.total }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

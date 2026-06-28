@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="logo">
+    <a routerLink="/">
+      <img src="assets/usuario/logo.png" />
+    </a>
+  </div>
+
+  <nav class="menu">
+    <a routerLink="/"> DIDIO PIZZA </a>
+  </nav>
+
+  <div class="right-area">
+    <a *ngIf="!logado" routerLink="/login" class="login-btn"> Login </a>
+
+    <a *ngIf="logado && !isAdmin" routerLink="/painel" class="user-link">
+      {{ usuarioNome }}
+    </a>
+
+    <a *ngIf="isAdmin" routerLink="/admin/dashboard" class="user-link">
+      {{ usuarioNome }}
+    </a>
+  </div>
+</header>

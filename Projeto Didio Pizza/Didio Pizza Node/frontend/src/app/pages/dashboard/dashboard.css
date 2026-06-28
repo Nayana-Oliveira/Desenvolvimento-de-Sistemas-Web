@@ -1,0 +1,447 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-top {
+  padding: 22px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+}
+
+.logo h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #df1b57;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu a {
+  height: 52px;
+  border-radius: 14px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  text-decoration: none;
+
+  font-size: 0.92rem;
+  font-weight: 600;
+
+  color: #333;
+
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  background: #fff0f5;
+  color: #df1b57;
+}
+
+.menu .active {
+  background: #fff0f5;
+  color: #df1b57;
+}
+
+.sidebar-bottom {
+  padding: 22px;
+  border-top: 1px solid #eee;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #eee;
+}
+
+.user-info strong {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.user-info span {
+  color: #999;
+  font-size: 0.76rem;
+}
+
+.logout {
+  width: 100%;
+  height: 46px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #fff0f5;
+  color: #df1b57;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout:hover {
+  transform: translateY(-2px);
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+}
+
+.top-header {
+  margin-bottom: 24px;
+}
+
+.top-header h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.top-header p {
+  margin-top: 5px;
+  color: #8f8f8f;
+  font-size: 0.92rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 22px;
+  border: 1px solid #ddd;
+
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card-info h3 {
+  color: #444;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.card-info strong {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.card-info span {
+  display: block;
+  margin-top: 8px;
+
+  color: #12b886;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.loja-box {
+  background: white;
+  border-radius: 22px;
+  border: 1px solid #ddd;
+
+  padding: 24px;
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loja-info h3 {
+  font-size: 0.95rem;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.loja-info strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.status-loja {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 8px;
+
+  color: #777;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.bolinha {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #12b886;
+  transition: 0.2s;
+}
+
+.bolinha.fechada {
+  background: #e03131;
+}
+
+.acoes-loja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-loja {
+  height: 46px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.btn-loja:hover {
+  transform: translateY(-2px);
+}
+
+.ver-btn {
+  background: #f3f3f3;
+  color: #444;
+}
+
+.ver-btn:hover {
+  background: #ebebeb;
+}
+
+.abrir-btn {
+  background: #e9fff4;
+  color: #12b886;
+}
+
+.abrir-btn:hover {
+  background: #d7f8ea;
+}
+
+.fechar-btn {
+  background: #fff0f3;
+  color: #df1b57;
+}
+
+.fechar-btn:hover {
+  background: #ffe3ea;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 22px;
+}
+
+.box {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.box-header {
+  height: 74px;
+  padding: 0 24px;
+
+  border-bottom: 1px solid #eee;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box-header h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.box-header a {
+  text-decoration: none;
+  color: #df1b57;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.estoque-item {
+  padding: 20px 24px;
+  border-top: 1px solid #eee;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.2s;
+}
+
+.estoque-item:hover {
+  background: #fafafa;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.item-info strong {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.item-info span {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.alerta {
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.atencao {
+  background: #fff3cd;
+  color: #f5a000;
+}
+
+.critico {
+  background: #ffe3e3;
+  color: #e03131;
+}
+
+.pedido-item {
+  padding: 18px 20px;
+  border-top: 1px solid #eee;
+}
+
+.pedido-item strong {
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 5px;
+}
+
+.pedido-item span {
+  color: #999;
+  font-size: 0.76rem;
+}
+
+.pedido-preco {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+.loja-fechada {
+  padding: 28px;
+  text-align: center;
+  color: #999;
+}
+
+@media (max-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 850px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .loja-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+}
+.pedido-item select {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: 600;
+  background: #fff;
+}

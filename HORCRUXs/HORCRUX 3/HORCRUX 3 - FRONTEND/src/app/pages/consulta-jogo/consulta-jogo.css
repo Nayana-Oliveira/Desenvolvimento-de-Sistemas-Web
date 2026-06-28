@@ -1,0 +1,88 @@
+h2 {
+    text-align: center;
+    color: #080241;
+    font-weight: 600;
+    margin-top: 50px;
+    letter-spacing: 1px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #080241;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1a0f6b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border-collapse: collapse;
+}
+
+th {
+    background: #080241;
+    color: white;
+    padding: 14px;
+    font-weight: 500;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+    background-color: #f4f6f8;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.actions button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #dc2626;
+}
+
+.actions button:hover {
+    background: #b91c1c;
+}
+
+.voltar {
+    display: block;
+    width: 160px;
+    margin: 25px auto;
+    padding: 11px;
+    text-align: center;
+    border-radius: 12px;
+    background: #080241;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.voltar:hover {
+    background-color: #1a0f6b;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}

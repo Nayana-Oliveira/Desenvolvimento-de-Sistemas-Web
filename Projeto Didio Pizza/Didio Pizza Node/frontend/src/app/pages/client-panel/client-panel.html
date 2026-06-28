@@ -1,0 +1,141 @@
+<div class="panel-page">
+  <div class="sidebar">
+    <div class="perfil">
+      <div class="avatar"></div>
+
+      <h2>
+        {{ usuario.nome || 'Usuário' }}
+      </h2>
+
+      <p>
+        {{ usuario.email || 'email@email.com' }}
+      </p>
+    </div>
+
+    <div class="menu">
+      <div class="menu-item sair" (click)="sair()">↩ Sair</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="top-header">
+      <h1>Pedidos Recentes</h1>
+
+      <button routerLink="/">Ir para o cardápio</button>
+    </div>
+
+    <div class="pedidos">
+      <div class="pedido-card" *ngFor="let item of pedidosRecentes">
+        <img [src]="item.imagem" />
+
+        <div class="pedido-info">
+          <div class="pedido-top">
+            <h3>
+              {{ item.nome }}
+            </h3>
+
+            <span> Entregue </span>
+          </div>
+
+          <p>
+            {{ item.tamanho }}
+            •
+            {{ item.borda }}
+          </p>
+
+          <strong>
+            R$
+            {{ (item.preco * item.quantidade).toFixed(2) }}
+          </strong>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="dados-title">Dados Pessoais</h1>
+
+    <div class="dados-card">
+      <div class="dados-left">
+        <div class="linha">
+          <strong>Nome completo:</strong>
+
+          <span>
+            {{ usuario.nome }}
+          </span>
+        </div>
+
+        <div class="linha">
+          <strong>Email:</strong>
+
+          <span>
+            {{ usuario.email }}
+          </span>
+        </div>
+
+        <div class="linha">
+          <strong>Telefone:</strong>
+
+          <span>
+            {{ usuario.telefone || 'Não informado' }}
+          </span>
+        </div>
+
+        <div class="linha">
+          <strong>Endereço:</strong>
+
+          <span>
+            {{ usuario.endereco || 'Não informado' }}
+          </span>
+        </div>
+
+        <button class="btn-editar" (click)="abrirModal()">Editar meus dados</button>
+      </div>
+
+      <div class="progress-area">
+        <div
+          class="progress-circle"
+          [style.background]="'conic-gradient(#e5165b ' + progresso + '%, #ececec 0%)'"
+        >
+          <div class="inner-circle">{{ progresso }}%</div>
+        </div>
+
+        <p>Complete seus dados</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" *ngIf="mostrarModal">
+  <div class="modal">
+    <h2>Editar Dados</h2>
+
+    <div class="input-group">
+      <label> Nome </label>
+
+      <input type="text" [(ngModel)]="usuario.nome" />
+    </div>
+
+    <div class="input-group">
+      <label> Email </label>
+
+      <input type="email" [(ngModel)]="usuario.email" />
+    </div>
+
+    <div class="input-group">
+      <label> Telefone </label>
+
+      <input type="text" [(ngModel)]="usuario.telefone" />
+    </div>
+
+    <div class="input-group">
+      <label> Endereço </label>
+
+      <input type="text" [(ngModel)]="usuario.endereco" />
+    </div>
+
+    <div class="acoes-modal">
+      <button class="cancelar" (click)="fecharModal()">Cancelar</button>
+
+      <button class="salvar" (click)="salvarDados()">Salvar</button>
+    </div>
+  </div>
+</div>

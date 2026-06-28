@@ -1,0 +1,122 @@
+<div class="cardapio-page">
+  <button class="cart-floating" type="button" (click)="abrirCarrinho()" aria-label="Abrir carrinho">
+    <span class="cart-icon">🛒</span>
+    <span class="cart-count">{{ carrinho.length }}</span>
+  </button>
+
+  <div class="menu-section">
+    <div class="top-area">
+      <div>
+        <h1>DIDIO PIZZA</h1>
+        <p>Escolha seus sabores favoritos</p>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Buscar pizza, bebida..." [(ngModel)]="busca" />
+      </div>
+    </div>
+
+    <div class="filters">
+      <button [class.active]="categoriaSelecionada === ''" (click)="selecionarCategoria('')">
+        TODAS
+      </button>
+
+      <button
+        *ngFor="let categoria of categorias"
+        [class.active]="categoriaSelecionada === categoria.nome"
+        (click)="selecionarCategoria(categoria.nome)"
+      >
+        {{ formatarCategoria(categoria.nome) }}
+      </button>
+    </div>
+
+    <h2 class="section-title">CARDÁPIO</h2>
+
+    <div class="pizza-grid">
+      <div class="pizza-item" *ngFor="let produto of produtosFiltrados">
+        <div class="info">
+          <h3>{{ produto.nome }}</h3>
+
+          <p>{{ produto.descricao }}</p>
+
+          <div class="pizza-footer">
+            <strong>R$ {{ produto.preco }}</strong>
+
+            <div class="card-actions">
+              <a class="btn-more" [routerLink]="['/produto', produto.produto_id || produto.id]">
+                Ver mais
+              </a>
+
+              <button class="btn-add" type="button" (click)="adicionarCarrinho(produto)">
+                <span>+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <img [src]="produto.imagem" [alt]="produto.nome" />
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-overlay" *ngIf="carrinhoAberto" (click)="fecharCarrinho()"></div>
+
+  <aside class="cart-section" [class.open]="carrinhoAberto">
+    <div class="cart-header">
+      <div>
+        <h2>Seu Pedido</h2>
+        <p>{{ carrinho.length }} item(ns) no carrinho</p>
+      </div>
+
+      <button class="btn-close" type="button" (click)="fecharCarrinho()">×</button>
+    </div>
+
+    <div class="cart-empty" *ngIf="carrinho.length === 0">
+      Seu carrinho está vazio.
+    </div>
+
+    <div class="cart-list" *ngIf="carrinho.length > 0">
+      <div class="cart-item" *ngFor="let item of carrinho; trackBy: trackByProduto">
+        <div class="details">
+          <strong>{{ item.nome }}</strong>
+
+          <small>
+            {{ item.quantidade }}x
+            <span *ngIf="item.tamanho"> • {{ item.tamanho }}</span>
+          </small>
+        </div>
+
+        <div class="cart-right">
+          <strong class="cart-price">
+            R$ {{ (item.preco * item.quantidade).toFixed(2) }}
+          </strong>
+
+          <button type="button" class="btn-remove" (click)="removerCarrinho(item)">
+            Remover
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="row">
+        <span>Subtotal</span>
+        <span>R$ {{ subtotal.toFixed(2) }}</span>
+      </div>
+
+      <div class="row">
+        <span>Taxa de entrega</span>
+        <span>R$ {{ taxaEntrega.toFixed(2) }}</span>
+      </div>
+
+      <div class="row total">
+        <span>Total</span>
+        <span>R$ {{ total.toFixed(2) }}</span>
+      </div>
+    </div>
+
+    <button class="btn-finalizar" type="button" (click)="finalizarPedido()">
+      Finalizar Pedido →
+    </button>
+  </aside>
+</div>
